@@ -1,0 +1,2 @@
+MAILGUN_SMTP_LOGIN: get_mailgun_login_from_production
+MAILGUN_SMTP_PASSWORD: get_mailgun_password_from_production
