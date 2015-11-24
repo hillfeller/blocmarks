@@ -8,21 +8,20 @@ class IncomingController < ApplicationController
     # to get a sense of what you're dealing with.
     puts "INCOMING PARAMS HERE: #{params}"
 
-    user = User.find(params[:sender])
-    topic = Topic.find(params[:subject])
-    bookmark = Bookmark.find(params["body-plain"])
+    @user = User.find_by(email: params[:sender])
+    #
+    # unless @user
+    #   @user = User.new(email: params[:sender])
+    #   @user.password = "password"
+    #   @user.save!
+    # end
 
-    @user = User.find(params[:id]) if params[:id].present?
-    unless @user
-      @user = current_user
+    if @user
+      @topic = @user.topics.find_or_create_by(title: params[:subject])
+      url = params["body-plain"]
+
+      @bookmark = @topic.bookmarks.create(url: url)
     end
-
-    @topic = Topic.find(params[:id]) if params[:id].present?
-    unless @topic
-      @topic = current_topic
-    end
-
-    @bookmark = Bookmark.new.find(params[:topic_id])
 
     head 200
   end
