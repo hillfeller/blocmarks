@@ -16,7 +16,7 @@
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
-        <%= link_to render_bookmark_title(bookmark), topic_bookmakr_path(@topic, bookmark) %>
+        <%= link_to bookmark.url, topic_bookmark_path(@topic, bookmark) %>
       </h4>
     </div>
   </div>
@@ -27,7 +27,5 @@
      <%= link_to "New Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
     </div>
   <%#end %>
-    <div>
-     <%= link_to "Delete Bookmark", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
-    </div>
+  
 </div>

@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   before_action :set_topic
 
   def show
-    @bookmark = @topic.bookmarks.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
   end
 
   def new
@@ -11,7 +11,7 @@ class BookmarksController < ApplicationController
   end
 
   def edit
-    @bookmark = @topic.bookmarks.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
 
   end
 
@@ -25,6 +25,19 @@ class BookmarksController < ApplicationController
     else
       flash[:error] = "Bookmark was not saved"
       render :new
+    end
+  end
+
+  def update
+    @bookmark = bookmark.find(params[:id])
+
+    authorize @bookmark
+    if @bookmark.update_attributes(bookmark_params)
+      flash[:notice] = "Bookmark was updated."
+      redirect_to [@bookmark.topic, @bookmark]
+    else
+      flash[:error] = "There was an error saving the bookmark. Please try again."
+      render :edit
     end
   end
 
@@ -45,5 +58,9 @@ class BookmarksController < ApplicationController
 
   def set_topic
     @topic = Topic.find(params[:topic_id])
+  end
+
+  def bookmark_params
+    params.require(:bookmark).permit(:url)
   end
 end
