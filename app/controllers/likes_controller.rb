@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     bookmark = Bookmark.find(params[:bookmark_id])
     like = current_user.likes.build(bookmark: @bookmark)
 
-    authorize like
+    authorize @like
     if like.save
       flash[:notice] = "Bookmark liked."
     else
