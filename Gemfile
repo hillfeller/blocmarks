@@ -40,3 +40,5 @@ gem 'figaro', '1.0'
 gem 'devise'
 
 gem 'pundit'
+
+gem 'faker'

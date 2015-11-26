@@ -1,6 +1,6 @@
-class Topic < ActiveRecord::Base
+class Like < ActiveRecord::Base
   belongs_to :user
-  has_many :bookmarks, dependent: :destroy
+  belongs_to :bookmark
   scope :visible_to, -> (user) { user ? all : where(public: true) }
 
 end

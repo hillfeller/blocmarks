@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to bookmark.url, topic_bookmark_path(bookmark.topic, bookmark) %>
+    </h4>
+    <h3>
+    <% if current_user %>
+      <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+    <% end %>
+    </h3>
+  </div>
+</div>

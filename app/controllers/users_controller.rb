@@ -6,6 +6,9 @@ class UsersController < ApplicationController
     unless @user
       @user = current_user
     end
+
+    @topics = @user.topics.visible_to(current_user)
+  
   end
 
   def create
