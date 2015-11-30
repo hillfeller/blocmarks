@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<body background="http://m.rgbimg.com/cache1s5PPd/users/x/xy/xymonau/600/nr87TbM.jpg">
 <head>
   <title>Blocmarks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,6 +8,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <a class="embedly-card" href="http://bloc.io">Bloc | Online Coding Bootcamp for Developers and Web Designers</a>
+  <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
   <div class="container">
   <% if user_signed_in? %>
     Signed in as: <strong><%= current_user.email %></strong> |

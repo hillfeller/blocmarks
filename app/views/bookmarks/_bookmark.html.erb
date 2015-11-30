@@ -1,7 +1,12 @@
 <div class="container">
   <div class="media-body">
     <h4 class="media-heading">
+      <div class="bookmark">
       <%= link_to bookmark.url, topic_bookmark_path(bookmark.topic, bookmark) %>
+      <%#= link_to( image_tag(bookmark.embedly_url), bookmark.url, class: "embedly-card" %>
+      <a class="embedly-card" href=link_to bookmark.url></a>
+      <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+      </div>
     </h4>
     <h3>
     <% if current_user %>

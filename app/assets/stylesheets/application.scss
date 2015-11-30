@@ -15,3 +15,39 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+h1 {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: Courier, "Lucida Console", monospace;
+}
+
+h2 {
+  font-size: x-large;
+  font-family: Courier, "Lucida Console", monospace;
+}
+
+h3 {
+  font-size: large;
+  font-family: Courier, "Lucida Console", monospace;
+}
+
+h4{
+  font-size: medium;
+  font-family: Courier, "Lucida Console", monospace;
+}
+
+p {
+  font-family: Courier, "Lucida Console", monospace;
+}
+
+table, th, td {
+  font-size: medium;
+  font-family: Courier, "Lucida Console", monospace;
+  border: 2px #2b2b2b solid;
+  color: #2b2b2b;
+}
+
+.bookmark {
+  width: 200px;
+}

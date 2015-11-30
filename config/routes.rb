@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy]
     end
   end
+  
   devise_for :users
   resources :users, only:[:show, :create]
   root 'users#show'

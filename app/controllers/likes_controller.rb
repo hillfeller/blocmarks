@@ -1,35 +1,35 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  after_action :verify_authorized
+
 
   def create
 
     bookmark = Bookmark.find(params[:bookmark_id])
-    like = current_user.likes.build(bookmark: @bookmark)
+    like = current_user.likes.build(bookmark: bookmark)
 
-    authorize @like
+    authorize like
     if like.save
       flash[:notice] = "Bookmark liked."
     else
       flash[:error] = "Like failed."
     end
 
-    redirect_to [bookmark.topic, bookmark]
+    redirect_to current_user
   end
 
 
   def destroy
-    bookmark = Bookmark.find(params[:bookmark_id])
-    like = current_user.likes.build(bookmark: @bookmark)
+
+    @like = current_user.likes.find(params[:id])
 
     authorize @like
-    # Get the bookmark from the params
-    # Find the current user's like with the ID in the params
 
-    if like.destroy
+    if @like.destroy
       flash[:notice] = "Bookmark unliked."
     else
       flash[:error] = "Unlike failed."
     end
-      redirect_to [bookmark.topic, bookmark]
+      redirect_to current_user
   end
 end
